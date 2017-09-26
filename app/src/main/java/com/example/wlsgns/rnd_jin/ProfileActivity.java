@@ -31,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
     private TextView textViewName; //Textview that shows current user's name
+    private TextView textViewasdasdas; //Textview that shows current user's name
 
     private Button logout,buttonEditP, buttonPhoto;
 

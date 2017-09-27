@@ -43,9 +43,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String id = user.getUid();
 
-
-
-
         dbRef = database.getReferenceFromUrl("https://testing-a2981.firebaseio.com/user").child(user.getUid());
 
         if(firebaseAuth.getCurrentUser() ==null){
@@ -65,8 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserInformation userInfo = dataSnapshot.getValue(UserInformation.class);
-                String fName = userInfo.fName.toString();
-                textViewName.setText("Welcome "+userInfo.fName);
+                textViewName.setText("Welcome "+userInfo.fName+" "+userInfo.lName);
             }
 
             @Override

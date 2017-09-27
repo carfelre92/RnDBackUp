@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //firebaseAuth object
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
     private DatabaseReference dbRef;
 
     @Override
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Initializing views
         progressDialog = new ProgressDialog(this);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
         dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://testing-a2981.firebaseio.com/user");
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
@@ -123,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         UserInformation userInformation = new UserInformation(fname, lname, gender, auth);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        String id = user.getUid();
-
         dbRef.child(user.getUid()).setValue(userInformation);
     }
 

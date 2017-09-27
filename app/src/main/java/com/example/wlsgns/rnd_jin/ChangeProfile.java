@@ -20,12 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 public class ChangeProfile extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth firebaseAuth;
-
     private DatabaseReference dbRef;
-
     private EditText editTextFName, editTextLName, editTextGender;
     private Button buttonSave,buttonReturn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,6 @@ public class ChangeProfile extends AppCompatActivity implements View.OnClickList
         }
 
         //Initializing views
-
         editTextFName = (EditText) findViewById(R.id.editTextFName);
         editTextLName = (EditText) findViewById(R.id.editTextLName);
         editTextGender = (EditText) findViewById(R.id.editTextGender);
@@ -98,10 +94,9 @@ public class ChangeProfile extends AppCompatActivity implements View.OnClickList
         if(v==buttonSave){
             saveUserInformation();
             finish();
-            startActivity(new Intent(this,ProfileActivity.class));
         }
         if(v==buttonReturn){
-            startActivity(new Intent(this,ProfileActivity.class));
+            finish();
         }
     }
 }

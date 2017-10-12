@@ -22,7 +22,7 @@ public class ChangeProfile extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbRef;
     private EditText editTextFName, editTextLName, editTextGender;
-    private Button buttonSave,buttonReturn;
+    private Button buttonSave,buttonReturn,buttonPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class ChangeProfile extends AppCompatActivity implements View.OnClickList
         editTextGender = (EditText) findViewById(R.id.editTextGender);
         buttonSave = (Button) findViewById(R.id.buttonSave);
         buttonReturn = (Button) findViewById(R.id.buttonReturn);
+        buttonPhoto = (Button) findViewById(R.id.buttonPhoto);
 
         //Firebase instances
         FirebaseUser user = firebaseAuth.getCurrentUser();

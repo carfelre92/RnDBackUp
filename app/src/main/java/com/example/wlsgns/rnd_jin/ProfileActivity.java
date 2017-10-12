@@ -25,19 +25,27 @@ import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth firebaseAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseAuth firebaseAuth;
     private DatabaseReference dbRef;
-
-
     private TextView textViewName; //Textview that shows current user's name
-
     private Button logout,buttonEditP, buttonPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        //Initializing views
+        logout = (Button) findViewById(R.id.logout);
+        buttonPhoto = (Button) findViewById(R.id.buttonPhoto);
+        buttonEditP = (Button) findViewById(R.id.buttonEditP);
+        textViewName = (TextView) findViewById(R.id.textViewName);
+
+        //Initializing listener to buttons
+        logout.setOnClickListener(this);
+        buttonEditP.setOnClickListener(this);
+        buttonPhoto.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -50,14 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, LoginActivity.class));
         }
 
-        //Initializing views
-        logout = (Button) findViewById(R.id.logout);
-        buttonEditP = (Button) findViewById(R.id.buttonEditP);
-        buttonPhoto = (Button) findViewById(R.id.buttonPhoto);
-
-        textViewName = (TextView) findViewById(R.id.textViewName);
-
-        //Retreiving user data
+        //Retrieving user data
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,11 +75,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //displaying current user's first name logged in
         //textViewName.setText("Welcome "+user.getEmail());
         logout = (Button) findViewById(R.id.logout);
-
-        //Initializing listener to buttons
-        logout.setOnClickListener(this);
-        buttonEditP.setOnClickListener(this);
-
     }
 
     @Override
@@ -94,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         if(view==buttonPhoto){
-
+            startActivity(new Intent(this,UploadPhoto.class));
         }
     }
 }

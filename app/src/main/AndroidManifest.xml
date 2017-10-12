@@ -21,6 +21,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ChangeProfile" />
+        <activity android:name=".UploadPhoto"></activity>
     </application>
 
 </manifest>
